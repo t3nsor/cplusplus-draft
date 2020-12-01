@@ -116,7 +116,8 @@ Its \grammarterm{declaration} shall not be an
 In a function template declaration, the \grammarterm{unqualified-id} of the
 \grammarterm{declarator-id} shall be a name.
 \begin{note}
-[NEEDS REVIEW] In a class or variable template declaration, if the declared name
+[NEEDS REVIEW] In a class or variable template declaration, if the
+declared name
 is a
 \grammarterm{simple-template-id},
 the declaration declares a partial specialization\iref{temp.spec.partial}.
@@ -3140,6 +3141,9 @@ specialization that would make use of the partial specialization as the result o
 an implicit or explicit instantiation; no diagnostic is required.
 
 \pnum
+Two partial specialization declarations declare the same entity
+if they are partial specializations of the same template and have equivalent
+\grammarterm{template-head}s and template argument lists\iref{temp.over.link}.
 Each partial specialization is a distinct template.
 
 \pnum
