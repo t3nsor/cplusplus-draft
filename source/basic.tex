@@ -1576,7 +1576,7 @@ struct V {
 };
 struct A {
   int a;
-  static int   s;
+  static int s;
   enum { e };
 };
 struct B : A, virtual V { };
@@ -2048,7 +2048,7 @@ considers only
 namespaces, types, and templates whose specializations are types.
 If a name, \grammarterm{template-id}, or \grammarterm{decltype-specifier}
 is followed by a \tcode{::},
-it shall  designate a namespace, class, enumeration, or dependent type,
+it shall designate a namespace, class, enumeration, or dependent type,
 and the \tcode{::} is never interpreted as
 a complete \grammarterm{nested-name-specifier}.
 \begin{example}

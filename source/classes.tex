@@ -2599,8 +2599,7 @@ struct Y : X {
 };
 
 void f(Y& a) {
-  if (a) {          // error: ambiguous between \tcode{X::operator int()} and \
-code{Y::operator char()}
+  if (a) {          // error: ambiguous between \tcode{X::operator int()} and \tcode{Y::operator char()}
   }
 }
 \end{codeblock}
