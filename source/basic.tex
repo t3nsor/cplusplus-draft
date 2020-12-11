@@ -1789,9 +1789,9 @@ namespace B {
     friend void A::f(D);        // OK
     friend void A::f(C);        // error: \tcode{A::N::C} not found
     friend void A::f(F);        // OK
-    friend void X::g(I);        // error: no \tcode{void X::g(short)}
-    friend void X::g(D);        // OK
-    friend void X::g(F);        // OK
+    friend void W::X::g(I);     // error: no \tcode{void X::g(short)}
+    friend void W::X::g(D);     // OK
+    friend void W::X::g(F);     // OK
   };
 }
 \end{codeblock}
