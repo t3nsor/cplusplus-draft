@@ -12,8 +12,14 @@ defaults:
 
 jobs:
   run-checks:
-    name: Run checks
-    runs-on: ubuntu-20.04
+    name: Run checks on ${{matrix.cfg.name}}
+    runs-on: ${{matrix.cfg.os}}
+
+    strategy:
+      matrix:
+        cfg:
+          - { name: 'Linux', os: 'ubuntu-20.04' }
+          - { name: 'MacOS', os: 'macos-10.15' }
 
     steps:
       - uses: actions/checkout@v2
