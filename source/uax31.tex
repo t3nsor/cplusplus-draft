@@ -15,7 +15,9 @@ R4 ``Equivalent Normalized Identifiers''.
 The other requirements, also listed below,
 are either alternatives not taken or do not apply to \Cpp{}.
 
-\rSec1[uaxid.default]{R1 Default identifiers}
+\rSec1[uaxid.def]{R1 Default identifiers}
+
+\rSec2[uaxid.def.general]{General}
 
 \pnum
 UAX \#31 specifies a default syntax for identifiers
@@ -44,7 +46,7 @@ where \grammarterm{identifier} is formed from
 \grammarterm{identifier-start} or
 \grammarterm{identifier} followed by \grammarterm{identifier-continue}.
 
-\rSec2[uaxid.rfmt]{R1a Restricted format characters}
+\rSec2[uaxid.def.rfmt]{R1a Restricted format characters}
 
 \pnum
 If an implementation of UAX \#31 wishes to allow format characters
@@ -55,7 +57,7 @@ describe precisely which combinations are permitted.
 \pnum
 \Cpp{} does not allow format characters in identifiers, so this does not apply.
 
-\rSec2[uaxid.stable]{R1b Stable identifiers}
+\rSec2[uaxid.def.stable]{R1b Stable identifiers}
 
 \pnum
 An implementation of UAX \#31 may choose to guarantee
