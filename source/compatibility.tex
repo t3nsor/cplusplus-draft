@@ -1,15 +1,33 @@
 %!TEX root = std.tex
 \infannex{diff}{Compatibility}
 
-% TODO: Add this once we have differences.
+\rSec1[diff.cpp20]{\Cpp{} and ISO \CppXX{}}
 
-%\rSec1[diff.cpp20]{\Cpp{} and ISO \CppXX{}}
-%
-%\pnum
-%\indextext{summary!compatibility with ISO \CppXX{}}%
-%This subclause lists the differences between \Cpp{} and
-%ISO \CppXX{} (ISO/IEC 14882:2020, \doccite{Programming Languages --- \Cpp{}}),
-%by the chapters of this document.
+\rSec2[diff.cpp20.general]{General}
+
+\pnum
+\indextext{summary!compatibility with ISO \CppXX{}}%
+This subclause lists the differences between \Cpp{} and
+ISO \CppXX{} (ISO/IEC 14882:2020, \doccite{Programming Languages --- \Cpp{}}),
+by the chapters of this document.
+
+\rSec2[diff.cpp20.lex]{\ref{lex}: lexical conventions}
+
+\diffref{lex.string}
+\change
+Concatenated \grammarterm{string-literal}s can no longer have
+conflicting \grammarterm{encoding-prefix}es.
+\rationale
+Removal of unimplemented conditionally-supported feature.
+\effect
+Concatenation of \grammarterm{string-literal}s
+with different \grammarterm{encoding-prefix}es
+is now ill-formed.
+\begin{example}
+\begin{codeblock}
+auto c = L"a" U"b";             // was conditionally-supported; now ill-formed
+\end{codeblock}
+\end{example}
 
 \rSec1[diff.cpp17]{\Cpp{} and ISO \CppXVII{}}
 
@@ -1831,6 +1849,21 @@ will not work the same as \Cpp{} programs.
 Simple.
 \howwide
 Programs which depend upon \tcode{sizeof('x')} are probably rare.
+
+\diffref{lex.string}
+\change
+Concatenated \grammarterm{string-literal}s can no longer have
+conflicting \grammarterm{encoding-prefix}es.
+\rationale
+Removal of non-portable feature.
+\effect
+Concatenation of \grammarterm{string-literal}s
+with different \grammarterm{encoding-prefix}es
+is now ill-formed.
+\difficulty
+Syntactic transformation.
+\howwide
+Seldom.
 
 \diffref{lex.string}
 \change
