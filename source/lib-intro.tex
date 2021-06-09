@@ -1917,7 +1917,7 @@ See Note C, below.
   \tcode{allocation_result<X::pointer>\{ptr, count\}}
   where \tcode{ptr} is memory allocated for an array of \tcode{count} \tcode{T}
   and such an object is created but array elements are not constructed,
-  such that $\tcode{count} >= \tcode{n}$.
+  such that $\tcode{count} \geq \tcode{n}$.
   \tcode{allocate_at_least} may throw an appropriate exception.
   See Note C, below. &
   See Note D, below. \\ \rowsep
@@ -1933,7 +1933,7 @@ See Note C, below.
   \tcode{req} be the value passed as the first argument of that call.
   \tcode{p} is equal to \tcode{ret.ptr} and
   \tcode{n} is a value such that
-  $\tcode{req} <= \tcode{n} <= \tcode{ret.count}$.
+  $\tcode{req} \leq \tcode{n} \leq \tcode{ret.count}$.
   \item
   Otherwise, \tcode{p} is a value obtained from \tcode{allocate}.
   \tcode{n} equals the value passed as the first argument

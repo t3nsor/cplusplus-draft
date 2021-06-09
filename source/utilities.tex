@@ -8379,7 +8379,7 @@ but not that of any of the array elements.
 \tcode{allocation_result<T*>\{ptr, count\}},
 where \tcode{ptr} is a pointer to
 the initial element of an array of \tcode{count} \tcode{T} and
-$\tcode{count} >= \tcode{n}$.
+$\tcode{count} \geq \tcode{n}$.
 
 \pnum
 \throws
@@ -8409,7 +8409,7 @@ If \tcode{p} is memory that was obtained by a call to \tcode{allocate_at_least},
 let \tcode{ret} be the value returned and
 \tcode{req} be the value passed as the first argument to that call.
 \tcode{p} is equal to \tcode{ret.ptr} and
-\tcode{n} is a value such that $\tcode{req} <= \tcode{n} <= \tcode{ret.count}$.
+\tcode{n} is a value such that $\tcode{req} \leq \tcode{n} \leq \tcode{ret.count}$.
 \item
 Otherwise, \tcode{p} is a pointer value obtained from \tcode{allocate}.
 \tcode{n} equals the value passed as the first argument
