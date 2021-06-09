@@ -1,15 +1,36 @@
 %!TEX root = std.tex
 \infannex{diff}{Compatibility}
 
-% TODO: Add this once we have differences.
+\rSec1[diff.cpp20]{\Cpp{} and ISO \CppXX{}}
 
-%\rSec1[diff.cpp20]{\Cpp{} and ISO \CppXX{}}
-%
-%\pnum
-%\indextext{summary!compatibility with ISO \CppXX{}}%
-%This subclause lists the differences between \Cpp{} and
-%ISO \CppXX{} (ISO/IEC 14882:2020, \doccite{Programming Languages --- \Cpp{}}),
-%by the chapters of this document.
+\rSec2[diff.cpp20.general]{General}
+
+\pnum
+\indextext{summary!compatibility with ISO \CppXX{}}%
+Subclause \ref{diff.cpp20} lists the differences between \Cpp{} and
+ISO \CppXX{} (ISO/IEC 14882:2020, \doccite{Programming Languages --- \Cpp{}}),
+by the chapters of this document.
+
+\rSec2[diff.cpp20.utilities]{\ref{utilities}: general utilities library}
+
+\diffref{format}
+\change
+Signature changes: \tcode{format}, \tcode{format_to}, \tcode{vformat_to},
+\tcode{format_to_n}, \tcode{formatted_size}.
+Removal of \tcode{format_args_t}.
+\rationale
+Improve safety via compile-time format string checks,
+avoid unnecessary template instantiations.
+\effect
+Valid \CppXX{} code that
+contained errors in format strings or
+relied on previous format string signatures or
+\tcode{format_args_t} may become ill-formed.
+For example:
+\begin{codeblock}
+auto s = std::format("{:d}", "I am not a number");      // ill-formed,
+                                                        // previously threw \tcode{format_error}
+\end{codeblock}
 
 \rSec1[diff.cpp17]{\Cpp{} and ISO \CppXVII{}}
 
