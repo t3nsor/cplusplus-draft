@@ -3124,7 +3124,7 @@ constexpr @\exposid{non-propagating-cache}@& operator=(@\exposid{non-propagating
 specified as follows:
 \begin{itemdecl}
 template<class I>
-  constexpr T& @\exposid{emplace-deref}@(const I& i);    // exposition only
+  constexpr T& @\exposid{emplace-deref}@(const I& i);    // \expos
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -5102,7 +5102,7 @@ namespace std::ranges {
       struct @\exposid{sentinel}@;                  // \expos
 
     V @\exposid{base_}@ = V();                      // \expos
-    @\exposid{non-propagating-cache}@<remove_cv_t<@\exposid{InnerRng}@>> inner_; // \expos, present only when \tcode{!is_reference_v<\exposid{InnerRng}>}
+    @\exposid{non-propagating-cache}@<remove_cv_t<@\exposid{InnerRng}@>> @\exposid{inner_}@; // \expos, present only when \tcode{!is_reference_v<\exposid{InnerRng}>}
   public:
     join_view() = default;
     constexpr explicit join_view(V base);
