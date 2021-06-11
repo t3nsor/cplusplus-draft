@@ -11548,9 +11548,9 @@ the same value as \tcode{hash<typename shared_ptr<T>::element_type*>()(p.get())}
 \rSec2[out.ptr.t]{Class template \tcode{out_ptr_t}}
 
 \pnum
-\tcode{out_ptr_t} is a class template used types
+\tcode{out_ptr_t} is a class template used to adapt types
 such as smart pointers\iref{smartptr},
-with functions that use output pointer parameters.
+for functions that use output pointer parameters.
 
 \pnum
 \begin{example}
@@ -11767,9 +11767,9 @@ otherwise \tcode{\exposid{POINTER_OF}(Smart)}.
 \rSec2[inout.ptr.t]{Class template \tcode{inout_ptr_t}}
 
 \pnum
-\tcode{inout_ptr_t} is a class template used types
+\tcode{inout_ptr_t} is a class template used to adapt types
 such as smart pointers\iref{smartptr},
-with functions that use output pointer parameters
+for functions that use output pointer parameters
 whose dereferenced values may first be deleted
 before being set to another allocated value.
 
@@ -11778,20 +11778,20 @@ before being set to another allocated value.
 \begin{codeblock}
 #include <memory>
 
-struct StarFish* starfish_alloc();
-int starfish_populate(struct StarFish** ps, const char *description);
+struct star_fish* star_fish_alloc();
+int star_fish_populate(struct star_fish** ps, const char* description);
 
-struct StarFishDeleter {
-  void operator() (struct StarFish* c) const noexcept;
+struct star_fish_deleter {
+  void operator() (struct star_fish* c) const noexcept;
 };
 
-using StarFishPtr = std::unique_ptr<StarFish, StarFishDeleter>;
+using star_fish_ptr = std::unique_ptr<star_fish, star_fish_deleter>;
 
 int main(int, char*[]) {
-  StarFishPtr peach(starfish_context());
+  star_fish_ptr peach(star_fish_context());
   // ...
   // used, need to re-make
-  int err = starfish_populate(std::inout_ptr(peach), "caring clown-fish liker");
+  int err = star_fish_populate(std::inout_ptr(peach), "caring clown-fish liker");
   return err;
 }
 \end{codeblock}
