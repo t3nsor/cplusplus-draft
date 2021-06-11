@@ -19153,7 +19153,7 @@ namespace std {
   using format_args = basic_format_args<format_context>;
   using wformat_args = basic_format_args<wformat_context>;
 
-  // \ref{format.err.report}, error reporting
+  // \ref{format.fmt.string}, class template \exposid{basic-format-string}
   template<class charT, class... Args>
     struct @\exposid{basic-format-string}@;                       // \expos
 
@@ -19961,6 +19961,8 @@ They propagate exceptions thrown by operations of
 \tcode{formatter} specializations and iterators.
 Failure to allocate storage is reported by
 throwing an exception as described in~\ref{res.on.exception.handling}.
+
+\rSec2[format.fmt.string]{Class template \exposid{basic-format-string}}
 
 \begin{codeblock}
 template<class charT, class... Args>
