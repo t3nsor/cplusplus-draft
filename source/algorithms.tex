@@ -1132,10 +1132,10 @@ namespace std {
       search(ForwardIterator first, ForwardIterator last, const Searcher& searcher);
 
   namespace ranges {
-    // \ref{alg.starts.with}, starts_with
+    // \ref{alg.starts.with}, starts with
     template<@\libconcept{input_iterator}@ I1, @\libconcept{sentinel_for}@<I1> S1, @\libconcept{input_iterator}@ I2, @\libconcept{sentinel_for}@<I2> S2,
              class Pred = ranges::equal_to, class Proj1 = identity, class Proj2 = identity>
-      requires indirectly_comparable<I1, I2, Pred, Proj1, Proj2>
+      requires @\libconcept{indirectly_comparable}@<I1, I2, Pred, Proj1, Proj2>
       constexpr bool starts_with(I1 first1, S1 last1, I2 first2, S2 last2, Pred pred = {},
                                  Proj1 proj1 = {}, Proj2 proj2 = {});
     template<@\libconcept{input_range}@ R1, @\libconcept{input_range}@ R2, class Pred = ranges::equal_to,
@@ -1144,7 +1144,7 @@ namespace std {
       constexpr bool starts_with(R1&& r1, R2&& r2, Pred pred = {},
                                  Proj1 proj1 = {}, Proj2 proj2 = {});
 
-    // \ref{alg.ends.with}, ends_with
+    // \ref{alg.ends.with}, ends with
     template<@\libconcept{input_iterator}@ I1, @\libconcept{sentinel_for}@<I1> S1, @\libconcept{input_iterator}@ I2, @\libconcept{sentinel_for}@<I2> S2,
              class Pred = ranges::equal_to, class Proj1 = identity, class Proj2 = identity>
       requires (@\libconcept{forward_iterator}@<I1> || @\libconcept{sized_sentinel_for}@<S1, I1>) &&
