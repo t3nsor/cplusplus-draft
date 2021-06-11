@@ -19155,13 +19155,13 @@ namespace std {
 
   // \ref{format.err.report}, error reporting
   template<class charT, class... Args>
-    struct @\exposid{basic-format-string}@;
+    struct @\exposid{basic-format-string}@;                       // \expos
 
   template<class... Args>
-    using @\exposid{format-string}@ =                             // exposition only
+    using @\exposid{format-string}@ =                             // \expos
       @\exposid{basic-format-string}@<char, type_identity_t<Args>...>;
   template<class... Args>
-    using @\exposid{wformat-string}@ =                            // exposition only
+    using @\exposid{wformat-string}@ =                            // \expos
       @\exposid{basic-format-string}@<wchar_t, type_identity_t<Args>...>;
 
   // \ref{format.functions}, formatting functions
@@ -19964,9 +19964,9 @@ throwing an exception as described in~\ref{res.on.exception.handling}.
 
 \begin{codeblock}
 template<class charT, class... Args>
-struct @\exposid{basic-format-string}@ {            // exposition only
+struct @\exposid{basic-format-string}@ {            // \expos
 private:
-  basic_string_view<charT> str;         // exposition only
+  basic_string_view<charT> @\exposid{str}@;         // \expos
 public:
   template<class T> consteval @\exposid{basic-format-string}@(const T& s);
 };
@@ -19979,17 +19979,17 @@ template<class T> consteval @\exposid{basic-format-string}@(const T& s);
 \begin{itemdescr}
 \pnum
 \constraints
-\tcode{const T\&} models \tcode{convertible_to<basic_string_view<charT>>}.
+\tcode{const T\&} models \tcode{\libconcept{convertible_to}<basic_string_view<charT>>}.
 
 \pnum
 \effects
-Direct-non-list-initializes \tcode{str} with \tcode{s}.
+Direct-non-list-initializes \exposid{str} with \tcode{s}.
 
 \pnum
 \remarks
 A call to this function is not a core constant expression\iref{expr.const}
 unless there exist \tcode{args} of types \tcode{Args}
-such that \tcode{str} is a format string for \tcode{args}.
+such that \exposid{str} is a format string for \tcode{args}.
 \end{itemdescr}
 
 \rSec2[format.functions]{Formatting functions}
@@ -20011,7 +20011,7 @@ template<class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat(fmt.str, make_format_args(args...));
+return vformat(fmt.@\exposid{str}@, make_format_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20026,7 +20026,7 @@ template<class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat(fmt.str, make_wformat_args(args...));
+return vformat(fmt.@\exposid{str}@, make_wformat_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20041,7 +20041,7 @@ template<class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat(loc, fmt.str, make_format_args(args...));
+return vformat(loc, fmt.@\exposid{str}@, make_format_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20056,7 +20056,7 @@ template<class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat(loc, fmt.str, make_wformat_args(args...));
+return vformat(loc, fmt.@\exposid{str}@, make_wformat_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20092,7 +20092,7 @@ template<class Out, class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat_to(out, fmt.str, make_format_args(args...));
+return vformat_to(out, fmt.@\exposid{str}@, make_format_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20107,7 +20107,7 @@ template<class Out, class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat_to(out, fmt.str, make_wformat_args(args...));
+return vformat_to(out, fmt.@\exposid{str}@, make_wformat_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20122,7 +20122,7 @@ template<class Out, class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat_to(out, loc, fmt.str, make_format_args(args...));
+return vformat_to(out, loc, fmt.@\exposid{str}@, make_format_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20137,7 +20137,7 @@ template<class Out, class... Args>
 \effects
 Equivalent to:
 \begin{codeblock}
-return vformat_to(out, loc, fmt.str, make_wformat_args(args...));
+return vformat_to(out, loc, fmt.@\exposid{str}@, make_wformat_args(args...));
 \end{codeblock}
 \end{itemdescr}
 
@@ -20207,7 +20207,7 @@ template<class Out, class... Args>
 \pnum
 Let
 \begin{itemize}
-\item \tcode{charT} be \tcode{decltype(fmt.str)::value_type},
+\item \tcode{charT} be \tcode{decltype(fmt.\exposid{str})::value_type},
 \item \tcode{N} be
 \tcode{formatted_size(fmt, args...)} for the functions without a \tcode{loc} parameter and
 \tcode{formatted_size(loc, fmt, args...)} for the functions with a \tcode{loc} parameter, and
@@ -20256,7 +20256,7 @@ template<class... Args>
 
 \begin{itemdescr}
 \pnum
-Let \tcode{charT} be \tcode{decltype(fmt.str)::value_type}.
+Let \tcode{charT} be \tcode{decltype(fmt.\exposid{str})::value_type}.
 
 \pnum
 \expects
